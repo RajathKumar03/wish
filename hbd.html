@@ -1,0 +1,529 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+</head>
+
+<body>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ea95cf;
+        }
+
+        .birthdayCard {
+            position: relative;
+            width: 250px;
+            height: 350px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transform: perspective(2500px);
+            transition: 3s;
+
+        }
+
+        .birthdayCard:hover {
+            transform: perspective(2500px) rotate(5deg);
+            scale: 1.2;
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .15), 0 10px 100px rgba(0, 0, 0, 0.3);
+        }
+
+        .birthdayCard:hover .cardFront {
+            transform: rotateY(-160deg);
+        }
+
+        .birthdayCard:hover .front-text {
+            display: none;
+        }
+
+        .birthdayCard:hover .wrap-deco {
+            display: none;
+        }
+
+        .birthdayCard:hover .wrap-decoTwo {
+            display: none;
+        }
+
+        .birthdayCard:hover .plate {
+            display: none;
+        }
+
+        .cardFront {
+            position: relative;
+            background-color: #fff;
+            width: 250px;
+            height: 350px;
+            overflow: hidden;
+            transform-origin: left;
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, .13), 30px 0 50px rgba(0, 0, 0, 0.1);
+            transition: .4s;
+        }
+
+        .happy,
+        .toyou {
+            position: relative;
+            font-family: didot;
+            text-align: center;
+            backface-visibility: hidden;
+            font-size: 30px;
+        }
+
+        .happy {
+            top: 198px;
+        }
+
+        .toyou {
+            top: 123px;
+        }
+
+        .bday {
+            position: relative;
+            font-family: arial;
+            font-size: 35px;
+            text-align: center;
+            top: 163px;
+        }
+
+        .wrap-deco {
+            position: absolute;
+            top: -230px;
+            left: -200px;
+        }
+
+        .decorations {
+            position: absolute;
+            width: 400px;
+            height: 300px;
+            border: 3px solid #333;
+            border-radius: 50%;
+        }
+
+        .decorations:before,
+        .decorations:after,
+        .decorationsTwo:before,
+        .decorationsTwo:after,
+        .decorationsThree:before,
+        .decorationsThree:after {
+            content: "";
+            position: absolute;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            width: 0;
+            height: 0;
+        }
+
+        .decorations:before {
+            border-top: 40px solid #f51414;
+            top: 297px;
+            left: 210px;
+            transform: rotate(-5deg);
+        }
+
+        .decorations:after {
+            border-top: 40px solid #7be106;
+            top: 288px;
+            left: 260px;
+            transform: rotate(-17deg);
+        }
+
+        .decorationsTwo:before {
+            border-top: 40px solid #00f5d4;
+            top: 268px;
+            left: 315px;
+            transform: rotate(-30deg);
+        }
+
+        .decorationsTwo:after,
+        .decorationsThree:after {
+            border-top: 40px solid #3d077e;
+            top: 238px;
+            left: 355px;
+            transform: rotate(-40deg);
+        }
+
+        .wrap-decoTwo {
+            transform: scaleX(-1);
+            position: absolute;
+            top: -230px;
+            left: 445px;
+        }
+
+        .decorationsThree:before {
+            border-top: 40px solid #00bbf9;
+            top: 268px;
+            left: 315px;
+            transform: rotate(-30deg);
+        }
+
+        .plate {
+            position: absolute;
+            width: 130px;
+            height: 5px;
+            background-color: #00bbf9;
+            left: 60px;
+            top: 213px;
+        }
+
+        .cake {
+            position: absolute;
+            overflow: hidden;
+            width: 100px;
+            height: 50px;
+            background-color: crimson;
+            border-radius: 10px 10px 0 0;
+            top: -50px;
+            left: 15px;
+            box-shadow: inset 0 -15px #f9c74f, inset 0 15px #432818;
+        }
+
+        .cake:before {
+            content: "";
+            position: absolute;
+            background-color: #e3f11d;
+            width: 10px;
+            height: 20px;
+            top: 5px;
+            border-radius: 20px;
+            box-shadow: 10px 5px #f230a4, 20px 0px #42c110, 30px 2px #3e112c, 40px 5px #22087d, 50px 5px #e39103, 60px 0px #652806, 70px 5px #d10e83, 80px 5px #1c0443, 90px 5px #e20a0a;
+        }
+
+        .plate:before {
+            content: "";
+            position: absolute;
+            background: repeating-linear-gradient(-45deg, #9b5de5, #9b5de5 3px, #00f5d4 3px, #00f5d4 6px);
+            width: 7px;
+            height: 25px;
+            top: -75px;
+            left: 61px;
+        }
+
+        .plate:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 5px;
+            background-color: #171010;
+            top: -80px;
+            left: 64px;
+        }
+
+
+        .flame {
+            position: absolute;
+            background-color: #fb5607;
+            border-radius: 80% 0 55% 50% / 55% 0 80% 50%;
+            transform: rotate(-45deg);
+            width: 15px;
+            height: 15px;
+            opacity: 0.7;
+            top: -93px;
+            left: 57px;
+            animation: move 1.5s infinite ease-in-out;
+            animation-timing-function: linear;
+        }
+
+        @keyframes move {
+            0% {
+                background-color: #fb5607;
+                scale: 1.1;
+            }
+
+            100% {
+                
+                background-color: #f37e1e;
+            }
+
+        }
+
+        .cardInside {
+            position: absolute;
+            background-color: #f1e7e7;
+            width: 250px;
+            height: 350px;
+            z-index: -1;
+            left: 0;
+            top: 0;
+            box-shadow: inset 100px 20px 100px rgba(0, 0, 0, 0.2);
+        }
+
+        .inside-text {
+            position: relative;
+            top: -160px;
+            transform: scale(0.7);
+            color: #8a0909;
+        }
+
+        .wishes {
+            position: relative;
+            top: -100px;
+            margin: 25px;
+        }
+
+        p {
+            font-family: 'Brush Script MT', cursive;
+            color: #333;
+        }
+
+        .name {
+            margin-left: 150px;
+        }
+
+        .h{
+            animation: h 2s infinite ease-in-out;
+            animation-timing-function: linear;
+        }
+        .b{
+            animation: b 2s infinite ease-in-out;
+            animation-timing-function: linear;
+        }
+        .t{
+            animation: o 2s infinite ease-in-out;
+            animation-timing-function: linear;
+        }
+
+        @keyframes h {
+            0% {
+                color: red;
+            }
+
+            45% {
+                
+                color: #dea216;
+            }
+            95%{
+                color: #42c110;
+            }
+
+        }
+        @keyframes b {
+            0% {
+                color: #dea216 ;
+            }
+
+            45% {
+                
+                color: #42c110 ;
+            }
+            95%{
+                color:  red;
+            }
+
+        }
+        @keyframes o {
+            0% {
+                color: #42c110;
+            }
+
+            45% {
+                
+                color: red;
+            }
+            95%{
+                color: #dea216;
+            }
+
+        }
+
+    </style>
+    <script >
+        const bdayBallons = (function(){
+    const density = 7; // concurrent balloon count
+    const balloons = []; 
+    const colors = ['yellow', 'green', 'blue', 'red'];
+
+    const stringElement = document.createElement("div");
+    stringElement.classList.add("string");
+
+    for (let i = 0; i < density; i++) {
+        const element = document.createElement("div");
+        element.classList.add("balloon");
+        element.classList.add(randomColor());
+
+        element.append(stringElement.cloneNode());
+        document.body.append(element);
+        
+        setTimeout(() => {
+            releaseBalloon(element);
+        }, (i * 2000) + random(500, 1000));
+    }
+
+
+    function randomColor() {
+        return colors[ random(0, colors.length) ];
+    }
+
+    function random (min, max){
+        return Math.floor(Math.random() * (max-min)) + min;
+    }
+
+    function releaseBalloon(balloon) {
+        const delay = random(100, 1000);
+        const x = random(-99, -30); // random x value to fly
+        const y = random(-99, -30); // random y value to fly
+
+        const sequence = [{
+            offset: 0,
+            transform: `rotateZ(45deg) translate(0, 0)`
+        }];
+
+
+        // random fly direction
+        if(random(0,2) === 0) {
+            // first fly up to top left
+
+            // left distance to keep balloon in view
+            balloon.style.left = `${-1*x}vw`;
+
+            sequence.push({
+                offset: x/-200,
+                transform: `rotateZ(45deg) translate(${x}vw, 0)`
+            });
+            sequence.push({
+                offset: (x+y)/-200,
+                transform: `rotateZ(45deg) translate(${x}vw, ${y}vh)`
+            });
+            sequence.push({
+                offset: (-100+y)/-200,
+                transform: `rotateZ(45deg) translate(-100vw, ${y}vh)`
+            });
+        } else {
+            // fist fly up to right top
+
+            sequence.push({
+                offset: y/-200,
+                transform: `rotateZ(45deg) translate(0, ${y}vh)`
+            });
+            sequence.push({
+                offset: (x+y)/-200,
+                transform: `rotateZ(45deg) translate(${x}vw, ${y}vh)`
+            });
+            sequence.push({
+                offset: (-100+x)/-200,
+                transform: `rotateZ(45deg) translate(${x}vw, -100vh)`
+            });
+        }
+
+        // last move is common
+        sequence.push({
+            offset: 1,
+            transform: `rotateZ(45deg) translate(-100vw, -100vh)`
+        });
+
+        const balloonAnimation = balloon.animate(sequence, {
+            duration: 15000,
+            delay: delay
+        });
+
+
+        balloonAnimation.onfinish = () => { releaseBalloon(balloon) }
+    }
+})();
+    </script>
+    <style>
+        .balloon {
+    --balloonDimension: 15vmax; /* 15% of min(viewport width, height) */
+    width: var(--balloonDimension);
+    height: var(--balloonDimension);
+    border-radius: 100% 100% 15% 100%;
+    margin: 0 0 0 25px;
+    transform: rotateZ(45deg);
+    position: fixed;
+    bottom: calc(-1 * var(--balloonDimension));
+    left: 0;
+    background-color: aqua;
+}
+.balloon::before {
+    content: "";
+    width: 10%;
+    height: 25%;
+    background: radial-gradient(circle, rgba(255,255,255,.7) 0%, rgba(255,255,255,.1) 100%);
+    position: absolute;
+    left: 15%;
+    top: 45%;
+    border-radius: 100%;
+}
+.balloon::after {
+    content: "";
+    width: 13%;
+    height: 5%;
+    background-color: inherit;
+    position: absolute;
+    left: 90%;
+    top: 94%;
+    border-radius: 22%;
+    transform: rotateZ(-45deg);
+}
+.balloon .string {
+    position: absolute;
+    background-color: #990;
+    width: 2px;
+    height: calc(var(--balloonDimension) * .6);
+    transform-origin: top center;
+    transform: rotateZ(-45deg);
+    top: calc(var(--balloonDimension) - 6px);
+    left: calc(var(--balloonDimension) - 8px);
+}
+.yellow{
+    background-color: rgba(150, 150, 0, .45);
+}
+.green{
+    background-color: rgba(0, 150, 0, .45);
+}
+.blue{
+    background-color: rgba(0, 0, 150, .45);
+}
+.red{
+    background-color: rgba(150, 0, 0, .45);
+}
+
+    </style>
+
+
+    <div class="birthdayCard" id="card">
+        <div class="cardFront">
+            <div class="front-text">
+                <h3 class="happy h">HAPPY</h3>
+                <h2 class="bday b">BIRTHDAY</h2>
+                <h3 class="toyou t">RACHANA</h3>
+            </div>
+            <div>
+                <img src="horn.jpg" alt="" style="margin-left: 20px;margin-top: 122px;border-radius: 50%;border: 2px solid crimson;padding: 5px;" width="200px" height="200px">
+            </div>
+            <div class="wrap-deco">
+                <div class="decorations"></div>
+                <div class="decorationsTwo"></div>
+            </div>
+            <div class="wrap-decoTwo">
+                <div class="decorations"></div>
+                <div class="decorationsThree"></div>
+            </div>
+            <div class="plate">
+                <div class="cake"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        <div class="cardInside">
+            <div class="inside-text">
+                <h3 class="happy">HAPPY</h3>
+                <h2 class="bday">BIRTHDAY</h2>
+                <h3 class="toyou">to you!</h3>
+            </div>
+            <div class="wishes">
+                <p
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    Dear Friend,</p>
+                <p
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                    Wish you a Very Happy birthday!! I hope your day is filled with lots of love and laughter! May all of your birthday
+                    wishes come true.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

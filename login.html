@@ -1,0 +1,155 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url(https://static.vecteezy.com/system/resources/previews/023/460/354/non_2x/happy-birthday-background-with-balloons-illustration-ai-generative-free-photo.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        section {
+            position: relative;
+            max-width: 800px;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(55px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 3rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        .inputbox {
+            position: relative;
+            margin: 30px 0;
+            max-width: 310px;
+            border-bottom: 2px solid #fff;
+        }
+
+        .inputbox label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 1rem;
+            pointer-events: none;
+            transition: all 0.5s ease-in-out;
+        }
+
+        input:focus~label,
+        input:valid~label {
+            top: -5px;
+        }
+
+        .inputbox input {
+            width: 100%;
+            height: 40px;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            padding: 0 35px 0 5px;
+            color: #fff;
+        }
+
+        .inputbox ion-icon {
+            position: absolute;
+            right: 8px;
+            color: #fff;
+            font-size: 1.2rem;
+            top: 20px;
+        }
+
+        .hint{
+            animation: mov 5s infinite linear;
+        }
+
+        @keyframes mov {
+            33%{
+                margin-top: 100px;
+            }
+            66%{
+                margin-bottom:100px;
+            }
+            0%{
+                margin-top: 0%;
+            }
+        }
+
+    </style>
+    <br><br><br>
+    <section style="margin-left: 350px;">
+        <form action="loading.html"  onsubmit="return check(this)">
+            <h1>Login</h1>
+            <hr><br>
+            <img style="padding-left: 40px;" src="login.png" height="180px" width="200px" alt="">
+            <div class="inputbox">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="text" name="name" required>
+                <label for="">Name </label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" name="pwd" required>
+                <label for="">Password</label>
+            </div>
+            <button style="margin-left: 90px;background-color: crimson;color: white;width: 80px;height: 30px;border-radius: 8px 8px 8px 8px ;" type="submit" value="LOGIN"> ENTER </button>
+        </form>
+    </section>
+    <div style="width: 100px;">
+
+    </div>
+    <section style="position: relative;color: beige;" class="hint">
+        <div class="hint">
+            <h2>Hint</h2>
+            <ul>
+                <li>Enter only your First Name</li>
+                <li>Enter the Name in Caps</li>
+                <li>Password is USN</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        function check(form) {
+
+            if ((form.name.value == "RACHANA" && form.pwd.value == "4SU21CS073")) {
+                return true;
+            } else {
+                alert("Try Again!! ")
+                return false;
+            }
+        }
+    </script>
+</body>
+
+</html>
